@@ -8,3 +8,22 @@ function intersection(...args) {
 }
 
 console.log(intersection([1, 1, 1, 1, 1, 2, 9, 3], [43, 1, 3, 8, 2], [3, 3, 3, , 1, 2, 4, 1, 2]))
+
+function intersection2(...args) {
+  let caches = args.map(() => [])
+  let length = args[0].length
+  let argLength = args.length
+  let array = args[0]
+  const seen = caches[0]
+  let result = []
+  let index = -1
+  while(++index < length) {
+    const value = array[index]
+    if (!(seen.includes(value) || result.includes(value))) {
+      while(--argLength) {
+        let cache = caches[argLength]
+        if (cache.includes(value) || args[argLength].includes(value)) {}
+      }
+    }
+  }
+}
