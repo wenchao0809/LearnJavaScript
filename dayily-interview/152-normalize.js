@@ -36,7 +36,7 @@ function normalize(str) {
       root = root || cur
       if (parent) parent.children = cur
       cur.value = valueMatch[1]
-      stack.push(cur)
+      stack.push(cur)``
       parent = cur
       str = str.slice(valueMatch[0].length)
     } else if (endRe.test(str)) {
