@@ -52,13 +52,15 @@ const sub = new Sub()
 sub.testSuperOnInstance()
 /**
  * ES6的继承链有三条
- * 一个是静态属性的继承也就是以父类自身为原型创建父类
+ * 一个是静态属性的继承也就是以父类自身为原型创建子类
  * 二是原型继承也就是Sub.prototype = Object.create(Super.prototype)
  * 另外还有一条隐藏的继承链是通过super()实现实例属性的继承的
  * 所以得出结论ES6的继承只不过是之前组合继承的语法糖
  */
-console.log(Sub.__proto__ === Super)
-console.log(Sub.constructor)
+ console.log(Super instanceof Function)
+ console.log(Super.__proto__ === Function.prototype)
+console.log(Sub.__proto__ === Super) // true
+console.log(Sub.constructor.prototype === Sub.__proto__) // false 由此可见Sub.__proto__是在创建后修改的
 console.log(sub.__proto__ === Sub.prototype)
 // 也就是Sub.prototype = Object.create(Super.prototype)
 console.log(Sub.prototype.__proto__ === Super.prototype)
