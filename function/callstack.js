@@ -14,12 +14,14 @@ function a(a) {
   printCallStack()
 }
 
-function b() {
+const d = function () {
   a(1, [1, 2, 3], { b: 1})
 }
 
+const z = d
+
 function main() {
-  b()
+  z()
 }
 main()
 
