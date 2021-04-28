@@ -11,7 +11,7 @@ function buildNext(p) {
     if (0 > t || p[j] === p[t]) {
       j++
       t++
-      // 根据已知信息如果p[j] !== t[i] 如果p[j] === p[t]则p[t]必然失配t[i]所以这次比较可以优化
+      // 假如t是原字符串 根据已知信息如果p[j] !== t[i] 如果p[j] === p[t]则p[t]必然失配t[i]所以这次比较可以优化
       N[j] = p[j] !== p[t] ? t : N[t]
     } else {
       t = N[t]
@@ -41,7 +41,7 @@ function match(t, p) {
   return j === m ? i - j : -1
 }
 
-export function indexOf(s, fromIndex = 0) {
+function indexOf(s, fromIndex = 0) {
   fromIndex = 0 > fromIndex  
     ? this.length + fromIndex > 0
       ? this.length + fromIndex
@@ -51,3 +51,14 @@ export function indexOf(s, fromIndex = 0) {
   const i = match(this.slice(fromIndex), s)
   return i > 0 ? fromIndex + i : i
 }
+
+/**
+ * @param {string} haystack
+ * @param {string} needle
+ * @return {number}
+ */
+var strStr = function(haystack, needle) {
+  return match(haystack, needle)
+};
+
+console.log(strStr('hello', ''))
